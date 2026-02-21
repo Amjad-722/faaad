@@ -7,7 +7,7 @@ export default function Table({ columns, data, onRowClick, emptyMessage = 'No da
             {columns.map((col) => (
               <th
                 key={col.key}
-                className="px-4 py-3 text-left font-medium text-primary-500 uppercase tracking-wider text-xs"
+                className="px-5 py-3.5 text-left font-medium text-primary-500 uppercase tracking-widest text-[11px]"
               >
                 {col.label}
               </th>
@@ -17,7 +17,7 @@ export default function Table({ columns, data, onRowClick, emptyMessage = 'No da
         <tbody className="divide-y divide-primary-100">
           {data.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} className="px-4 py-8 text-center text-primary-400">
+              <td colSpan={columns.length} className="px-5 py-10 text-center text-primary-400 italic">
                 {emptyMessage}
               </td>
             </tr>
@@ -32,7 +32,7 @@ export default function Table({ columns, data, onRowClick, emptyMessage = 'No da
                 `}
               >
                 {columns.map((col) => (
-                  <td key={col.key} className="px-4 py-3 text-primary-700">
+                  <td key={col.key} className="px-5 py-3.5 text-primary-700">
                     {col.render ? col.render(row[col.key], row) : row[col.key]}
                   </td>
                 ))}

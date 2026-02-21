@@ -90,7 +90,7 @@ export default function Clients() {
         </span>
       ),
     },
-    { key: 'email', label: 'Email', render: (val) => val || <span className="text-primary-300">—</span> },
+    { key: 'email', label: 'Email', render: (val) => val || <span className="text-primary-300 italic">—</span> },
     { key: 'appointment_count', label: 'Appointments' },
     {
       key: 'actions',
@@ -98,11 +98,11 @@ export default function Clients() {
       render: (_, row) => (
         <div className="flex gap-1">
           <button onClick={(e) => { e.stopPropagation(); openEdit(row); }}
-            className="p-1.5 rounded hover:bg-primary-100 text-primary-500" title="Edit">
+            className="p-1.5 rounded-lg hover:bg-primary-100 text-primary-500" title="Edit">
             <Edit2 size={15} />
           </button>
           <button onClick={(e) => { e.stopPropagation(); handleDelete(row.id); }}
-            className="p-1.5 rounded hover:bg-red-50 text-red-400" title="Delete">
+            className="p-1.5 rounded-lg hover:bg-red-50 text-red-400" title="Delete">
             <Trash2 size={15} />
           </button>
         </div>
@@ -111,11 +111,11 @@ export default function Clients() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-primary-900">Clients</h1>
-          <p className="text-primary-500 mt-1">Manage your client list</p>
+          <h1 className="text-3xl font-serif font-semibold text-primary-900">Clients</h1>
+          <p className="text-primary-500 mt-1 tracking-wide">Manage your client portfolio</p>
         </div>
         <Button onClick={openNew}>
           <Plus size={16} /> Add Client
@@ -125,17 +125,17 @@ export default function Clients() {
       <Card>
         <CardHeader>
           <div className="relative">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-primary-400" />
+            <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-primary-400" />
             <input
               type="text"
               value={search}
               onChange={handleSearch}
               placeholder="Search clients by name or phone..."
-              className="w-full pl-9 pr-4 py-2 rounded-lg border border-primary-300 text-sm focus:outline-none focus:ring-2 focus:ring-secondary-300 focus:border-secondary-500"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-primary-300 text-sm focus:outline-none focus:ring-2 focus:ring-accent-200 focus:border-accent-500 transition-all"
             />
           </div>
         </CardHeader>
-        <Table columns={columns} data={clients || []} emptyMessage="No clients yet — add your first one!" />
+        <Table columns={columns} data={clients || []} emptyMessage="No clients yet — add your first one" />
       </Card>
 
       <Modal open={showModal} onClose={() => setShowModal(false)} title={editing ? 'Edit Client' : 'Add Client'}>
@@ -174,10 +174,10 @@ export default function Clients() {
             name="notes"
             value={form.values.notes}
             onChange={form.handleChange}
-            placeholder="Preferred styles, allergies, etc."
+            placeholder="Preferred styles, preferences, etc."
           />
 
-          <div className="flex justify-end gap-3 pt-2">
+          <div className="flex justify-end gap-3 pt-3">
             <Button variant="secondary" type="button" onClick={() => setShowModal(false)}>
               Cancel
             </Button>
